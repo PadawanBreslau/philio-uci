@@ -66,4 +66,65 @@ describe Engine do
     end
 
   end
+
+  context 'other calls' do
+    before do
+      options = {:engine_path => '/usr/games/stockfish'}
+      @engine = Engine.new(options)
+      expect{@engine.send_command('uci')}.not_to raise_error
+    end
+
+    it 'should be able to send other comamnds' do
+      expect{@response = @engine.send_command('ucinewgame')}.not_to raise_error
+      @engine.input.should_not be_nil
+      @response.should be_true
+
+      expect{@response = @engine.send_command('position', 'startpos')}.not_to raise_error
+      @engine.input.should_not be_nil
+      @response.should be_true
+
+      expect{@response = @engine.send_command('go', 'ponder')}.not_to raise_error
+      @engine.input.should_not be_nil
+      @response.should be_kind_of String
+
+      expect{@response = @engine.send_command('stop')}.not_to raise_error
+      @engine.input.should_not be_nil
+      @response.should be_kind_of String
+
+      expect{@response = @engine.send_command('go', 'searchmoves', 'e2e4', 'd2d4')}.not_to raise_error
+      @engine.input.should_not be_nil
+      @response.should be_kind_of String
+
+      expect{@response = @engine.send_command('stop')}.not_to raise_error
+      @engine.input.should_not be_nil
+      @response.should be_kind_of String
+
+      expect{@response = @engine.send_command('go', 'depth', '5')}.not_to raise_error
+      @engine.input.should_not be_nil
+      @response.should be_kind_of String
+
+      expect{@response = @engine.send_command('stop')}.not_to raise_error
+      @engine.input.should_not be_nil
+      @response.should be_kind_of String
+
+      expect{@response = @engine.send_command('go', 'movetime', '5000')}.not_to raise_error
+      @engine.input.should_not be_nil
+      @response.should be_kind_of String
+
+      expect{@response = @engine.send_command('stop')}.not_to raise_error
+      @engine.input.should_not be_nil
+      @response.should be_kind_of String
+
+      expect{@response = @engine.send_command('go', 'infinite')}.not_to raise_error
+      @engine.input.should_not be_nil
+      @response.should be_kind_of String
+
+      sleep 5
+
+      expect{@response = @engine.send_command('stop')}.not_to raise_error
+      @engine.input.should_not be_nil
+      @response.should be_kind_of String
+
+    end
+  end
 end

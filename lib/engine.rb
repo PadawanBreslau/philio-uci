@@ -2,7 +2,7 @@ require 'open3'
 require 'io/wait'
 
 class Engine
-  VALID_COMMANDS = %w(uci isready)
+  VALID_COMMANDS = %w(uci isready ucinewgame position go stop)
   VALID_OPTIONS = %w(Ponder)
 
   attr_reader :engine_path, :movetime, :output, :input
@@ -37,7 +37,7 @@ class Engine
   end
 
   def engine_response
-    @input.wait
+    @input.wait(1)
     while(@input.ready?)
       (@last_input = @input.readline).tap{|i| write_to_log(i)}
     end
