@@ -4,7 +4,7 @@ module PhilioUCI
       result = Hash.new
       splited_eval = evaluation.split(' ')
       depth_index = splited_eval.index('depth')
-      result[:depth] = splited_eval[depth_index+1] if depth_index
+      result[:depth] = splited_eval[depth_index+1].to_i if depth_index
       score_index = splited_eval.index('score')
       result[:score] = splited_eval[score_index+2].to_i/100.0 if score_index
       time_index = splited_eval.index('time')

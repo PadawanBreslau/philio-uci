@@ -1,16 +1,5 @@
-require 'simplecov'
-require 'coveralls'
-
-
-
-SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter[
-  SimpleCov::Formatter::HTMLFormatter,
-  Coveralls::SimpleCov::Formatter
-]
-SimpleCov.start
-
-require 'engine.rb'
-
+require_relative '../lib/philio_uci/engine.rb'
+require_relative '../lib/philio_uci/data_parser.rb'
 
 # Require this file using `require "spec_helper"` within each of your specs
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration

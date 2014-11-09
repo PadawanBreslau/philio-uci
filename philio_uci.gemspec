@@ -18,7 +18,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rspec", "~> 2.6"
   spec.add_development_dependency "redcarpet", ">= 2.2"
   spec.add_development_dependency "yard", ">= 0.8.5.2"
-  spec.add_development_dependency "simplecov", ">= 0.7.1"
-  spec.add_development_dependency 'coveralls', '>= 0.6.1'
 
 end
