@@ -1,6 +1,6 @@
 Gem::Specification.new do |spec|
   spec.name = %q{philio_uci}
-  spec.version = "0.0.3"
+  spec.version = "0.0.4"
   spec.date = %q{2013-09-05}
   spec.summary = %q{gem for universal chess interface}
 
